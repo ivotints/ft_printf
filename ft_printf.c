@@ -6,7 +6,7 @@
 /*   By: ivotints <ivotints@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:32 by ivotints          #+#    #+#             */
-/*   Updated: 2024/02/10 13:22:52 by ivotints         ###   ########.fr       */
+/*   Updated: 2024/09/14 19:27:57 by ivotints         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,19 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
-/* #include "ft_functions.c"
+/*
 
-int	main(void)
+#include "ft_printf.h"
+#include <stdio.h>
+
+int	main()
 {
-int c = -3249;
-unsigned int b = -34324913;
-int a = 42;
-char* g;
-g = NULL;
+	int c = -3249;
+	unsigned int b = -34324913;
+	int a = 42;
+
+	ft_printf(NULL);
+		printf(NULL);
 
 	ft_printf("my char: 			%c, %c\n", 'A', 'b');
 		printf("char: 				%c, %c\n\n", 'A', 'b');
@@ -106,4 +110,7 @@ g = NULL;
 
 	ft_printf("%d\n", ft_printf("My number of printed chars:	"));
 		printf("%d\n", 	printf("PF number of printed chars:	"));
-} */
+}
+
+
+ */
