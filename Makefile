@@ -6,36 +6,32 @@
 #    By: ivotints <ivotints@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/10 13:05:03 by ivotints          #+#    #+#              #
-#    Updated: 2024/02/10 13:24:11 by ivotints         ###   ########.fr        #
+#    Updated: 2024/10/22 05:51:10 by ivotints         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS = ft_printf.c ft_functions.c
-OBJS = $(SRCS:.c=.o)
-CC = cc
-INCS = ft_printf.h
+OBJ_DIR = obj
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-%.o: %.c $(INCS)
-	@echo "Compiling all object files:"
-	$(CC) $(CFLAGS) -c $(SRCS)
-	@echo
+$(OBJ_DIR):
+	@mkdir -p $@
 
-$(NAME): $(OBJS)
-	@echo "Creating archive:" $(NAME)
-	ar rc $(NAME) $(OBJS)
-	@echo
+$(OBJ_DIR)/%.o: %.c
+	@${CC} ${CFLAGS} -c $< -o $@
+
+$(NAME): $(OBJ_DIR) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 clean:
-	@echo "Removing all object files"
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "Removing" $(NAME)
-	rm -f $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

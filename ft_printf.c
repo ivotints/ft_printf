@@ -6,7 +6,7 @@
 /*   By: ivotints <ivotints@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:32 by ivotints          #+#    #+#             */
-/*   Updated: 2024/09/14 19:27:57 by ivotints         ###   ########.fr       */
+/*   Updated: 2024/10/22 05:57:10 by ivotints         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,26 @@ int	ft_printf(const char *format, ...)
 	int		i;
 	int		len;
 
-	i = 0;
+	if (!format)
+		return (0);
+	i = -1;
 	len = 0;
 	va_start(args, format);
-	while (format[i])
+	while (format[++i])
 	{
 		if (format[i] == '%')
-		{
-			i++;
-			ft_specifier(format[i], &args, &len, &i);
-			i++;
-		}
+			ft_specifier(format[++i], &args, &len, &i);
 		else
-		{
 			ft_putchar((char)format[i], &len);
-			i++;
-		}
 	}
 	va_end(args);
 	return (len);
 }
 
 /*
+
+
+
 
 #include "ft_printf.h"
 #include <stdio.h>
@@ -111,6 +109,9 @@ int	main()
 	ft_printf("%d\n", ft_printf("My number of printed chars:	"));
 		printf("%d\n", 	printf("PF number of printed chars:	"));
 }
+
+
+
 
 
  */
